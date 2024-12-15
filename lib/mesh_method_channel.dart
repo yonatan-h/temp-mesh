@@ -9,7 +9,7 @@ import 'mesh_platform_interface.dart';
 class MethodChannelMesh extends MeshPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
-  final methodChannel = const MethodChannel('mesh');
+  final methodChannel = const MethodChannel('mesh_method');
 
   @override
   Future<String?> getPlatformVersion() async {
