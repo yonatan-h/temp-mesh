@@ -69,6 +69,14 @@ class Home extends StatelessWidget {
         child: Text('Running on mesh library\n'),
       ),
       TextButton(
+        child: Text('Get Platform version'),
+        onPressed: () async {
+          String? conf = await _mesh.getPlatformVersion();
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(conf ?? 'unknown')));
+        },
+      ),
+      TextButton(
         child: Text('Send Message'),
         onPressed: () async {
           String conf = await _mesh.sendMessage("hello world");

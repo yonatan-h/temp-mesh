@@ -9,7 +9,7 @@ import 'mesh_platform_interface.dart';
 class MethodChannelMesh extends MeshPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
-  final methodChannel = const MethodChannel('mesh_base');
+  final methodChannel = const MethodChannel('mesh');
 
   @override
   Future<String?> getPlatformVersion() async {
@@ -20,7 +20,8 @@ class MethodChannelMesh extends MeshPlatform {
 
   @override
   Future<String> sendMessage(String str) async {
-    String? res = await methodChannel.invokeMethod<String>('sendMessage');
+    String? res = await methodChannel
+        .invokeMethod<String>('sendMessage', {"message": str});
     return res ?? "no-result";
   }
 
