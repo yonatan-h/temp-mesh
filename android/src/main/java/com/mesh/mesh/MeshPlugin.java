@@ -27,9 +27,7 @@ public class MeshPlugin implements FlutterPlugin, MethodCallHandler {
             Log.d(KEY, "sending event:" + s);
             new Handler(
                     Looper.getMainLooper()
-            ).post(() -> {
-                eventSink.success(s);
-            });
+            ).post(() -> eventSink.success(s));
         } else {
             throw new RuntimeException("eventSink is null");
         }
@@ -75,7 +73,7 @@ public class MeshPlugin implements FlutterPlugin, MethodCallHandler {
     @Override
     public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
         if (call.method.equals("getPlatformVersion")) {
-            result.success("Android -- " + android.os.Build.VERSION.RELEASE);
+            result.success("Android " + android.os.Build.VERSION.RELEASE);
         } else if (call.method.equals("sendMessage")) {
             Log.d(KEY, "sending message");
             String msg = call.argument("message");
